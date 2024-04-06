@@ -1,0 +1,41 @@
+{
+    "name": "phpcolor/colors",
+    "description": "PHP Colors",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "php",
+        "color"
+    ],
+    "authors": [
+        {
+            "name": "Simon André",
+            "email": "smn.andre@gmail.com"
+        },
+        {
+            "name": "Raphaël Geffroy",
+            "email": "raphael@geffroy.dev"
+        }
+    ],
+    "require": {
+        "php": ">=8.3",
+        "symfony/var-dumper": "^7.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^11.0"
+    },
+    "replace": {
+        "phpcolor/apple-colors": "self.version",
+        "phpcolor/bootstrap-colors": "self.version"
+    },
+    "autoload": {
+        "psr-4": {
+            "PhpColor\\Colors\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "PhpColor\\Colors\\Tests\\": "tests/"
+        }
+    }
+}

@@ -1,0 +1,42 @@
+{
+    "name": "phpcolor/bootstrap-colors",
+    "description": "Bootstrap Colors - PHP Color Palette",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "bootstrap",
+        "color",
+        "palette",
+        "php",
+        "theme"
+    ],
+    "authors": [
+        {
+            "name": "Simon André",
+            "email": "smn.andre@gmail.com"
+        },
+        {
+            "name": "Raphaël Geffroy",
+            "email": "raphael@geffroy.dev"
+        }
+    ],
+    "homepage": "https://phpcolor.dev/colors/",
+    "support": {
+        "issues": "https://github.com/phpcolor/colors/issues",
+        "source": "https://github.com/phpcolor/colors/"
+    },
+    "require": {
+        "php": ">=8.3"
+    },
+    "autoload": {
+        "psr-4": {
+            "Phpcolor\\Colors\\Bootstrap\\": ""
+        }
+    },
+    "extra": {
+        "thanks": {
+            "name": "phpcolor/colors",
+            "url": "https://github.com/phpcolor/colors"
+        }
+    }
+}
