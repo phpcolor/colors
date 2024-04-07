@@ -1,0 +1,36 @@
+name: 'Split Packages'
+
+on:
+  push:
+    branches:
+      - main
+      - '*.x'
+    tags:
+      - 'v*'
+
+jobs:
+  split:
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        package:
+          - { src: 'Bootstrap', repo: 'bootstrap-colors' }
+          - { src: 'Tailwind', repo: 'tailwind-colors' }
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
+
+      - name: Split package ${{ matrix.package.src }}
+        uses: "claudiodekker/splitsh-action@v1.0.0"
+        env:
+          GITHUB_TOKEN: ${{ secrets.COLORS_SPLIT_PERSONAL_ACCESS_TOKEN }}
+        with:
+          prefix: "src/${{ matrix.package.src }}"
+          remote: "https://github.com/phpcolors/${{ matrix.package.repo }}.git"
+          reference: "${{ github.ref_name }}"
+          as_tag: "${{ startsWith(github.ref, 'refs/tags/') }}"
