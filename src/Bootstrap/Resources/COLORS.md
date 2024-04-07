@@ -1,5 +1,7 @@
+<h1 align="center">Bootstrap Colors - Full List</h1>
+<p align="center">This package provides access to the entire color palette used in Bootstrap. Below is a comprehensive list of all the colors available.</p>
+<img src="colors.svg" alt="Bootstrap Colors" width="100%">
 
-<img src="bootstrap.svg" alt="Bootstrap Colors" width="100%"  />
 
 | Color | Hex | Color | Hex | Color | Hex |
 |:-----:|:---:|:-----:|:---:|:-----:|:---:|

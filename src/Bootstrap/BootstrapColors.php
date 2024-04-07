@@ -1,13 +1,19 @@
 <?php
 
+declare(strict_types=1);
+
+/*
+ * This file is part of the PhpColor package.
+ *
+ * (c) Simon André & Raphaël Geffroy
+ *
+ * For the full copyright and license information, please view
+ * the LICENSE file that was distributed with this source code.
+ */
+
 namespace PhpColor\Colors\Bootstrap;
 
-use ArrayIterator;
-use Countable;
-use Iterator;
-use Traversable;
-
-class BootstrapColors implements \IteratorAggregate, Countable
+class BootstrapColors implements \IteratorAggregate, \Countable
 {
     public const string BLUE = 'blue';
 
@@ -184,13 +190,14 @@ class BootstrapColors implements \IteratorAggregate, Countable
         return self::get('indigo', $value);
     }
 
-    public function getColors(string $color): Iterator
+    public function getColors(string $color): \Iterator
     {
         $colors = [];
         foreach (self::COLORS[$color] as $key => $colorValue) {
-             $colors[$color.'-'.$key] = $colorValue;
+            $colors[$color.'-'.$key] = $colorValue;
         }
-        return new ArrayIterator($colors);
+
+        return new \ArrayIterator($colors);
     }
 
     public function getColor(string $color, int $value = 500): string
@@ -198,7 +205,7 @@ class BootstrapColors implements \IteratorAggregate, Countable
         return self::COLORS[$color][$value] ?? throw new \InvalidArgumentException(sprintf('Unknown color value "%s-%s"', $color, $value));
     }
 
-    public function getIterator(): Iterator
+    public function getIterator(): \Iterator
     {
         foreach (array_keys(self::COLORS) as $color) {
             yield from $this->getColors($color);
@@ -214,5 +221,4 @@ class BootstrapColors implements \IteratorAggregate, Countable
     {
         return self::COLORS[$color][$value] ?? throw new \InvalidArgumentException(sprintf('Unknown color value "%s-%s"', $color, $value));
     }
-
 }

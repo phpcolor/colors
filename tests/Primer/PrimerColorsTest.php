@@ -11,16 +11,16 @@ declare(strict_types=1);
  * the LICENSE file that was distributed with this source code.
  */
 
-namespace PhpColor\Colors\Tests\Bootstrap;
+namespace PhpColor\Colors\Tests\Primer;
 
-use PhpColor\Colors\Bootstrap\BootstrapColors;
+use PhpColor\Colors\Primer\PrimerColors;
 use PHPUnit\Framework\TestCase;
 
-class BootstrapColorsTest extends TestCase
+class PrimerColorsTest extends TestCase
 {
     public function testGetIterator(): void
     {
-        $colors = new BootstrapColors();
+        $colors = new PrimerColors();
 
         foreach ($colors as $name => $color) {
             var_dump($name, $color);

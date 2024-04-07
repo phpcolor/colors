@@ -1,8 +1,6 @@
-# Bootstrap Colors
-
-![Bootstrap Colors](bootstrap.svg)
-
-This package provides access to the entire color palette used in Bootstrap. Below is a comprehensive list of all the colors available.
+<h1 align="center">Bootstrap Colors</h1>
+<p align="center">This package provides access to the entire color palette used in Bootstrap. Below is a comprehensive list of all the colors available.</p>
+<img src="Resources/colors.svg" alt="Bootstrap Colors" width="100%">
 
 ## Installation
 
@@ -73,17 +71,14 @@ foreach (Bootstrap::colors($base) as $name => $color) {
 
 ---
 
-![Bootstrap Colors](bootstrap.svg)
+![Bootstrap Colors](Resources/colors.svg)
 
 
 ## Credits
 
 The colors listed in this project are based on the colors used by [Bootstrap](https://getbootstrap.com/). 
 
-Bootstrap is an open-source project licensed under the MIT license.
-
 
 ## License
 
 This library is released under the [MIT license](LICENSE).
-
