@@ -27,7 +27,8 @@
     "replace": {
         "phpcolor/apple-colors": "self.version",
         "phpcolor/bootstrap-colors": "self.version",
-        "phpcolor/primer-colors": "self.version"
+        "phpcolor/primer-colors": "self.version",
+        "phpcolor/tailwind-colors": "self.version"
     },
     "autoload": {
         "psr-4": {

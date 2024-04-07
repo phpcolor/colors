@@ -4,11 +4,10 @@
     "license": "MIT",
     "type": "library",
     "keywords": [
-        "primer",
         "github",
+        "primer",
         "color",
         "palette",
-        "php",
         "scale",
         "theme"
     ],
@@ -23,10 +22,6 @@
         }
     ],
     "homepage": "https://phpcolor.dev/",
-    "support": {
-        "issues": "https://github.com/phpcolor/colors/issues",
-        "source": "https://github.com/phpcolor/colors/"
-    },
     "require": {
         "php": ">=8.3"
     },

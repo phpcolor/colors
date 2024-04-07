@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the PhpColor package.
+ * This file is part of the PhpColor library.
  *
  * (c) Simon André & Raphaël Geffroy
  *
@@ -20,6 +20,22 @@ final class TailwindColors implements \IteratorAggregate, \Countable
     private static function loadColors(): array
     {
         return self::$colors ??= require __DIR__.'/Resources/colors.php';
+    }
+
+    public function colors(?string $color = null): array
+    {
+        if ($color) {
+            return self::loadColors()[$color] ?? throw new \InvalidArgumentException(sprintf('The color "%s" does not exist.', $color));
+        }
+
+        return array_keys(self::loadColors());
+    }
+
+    public function color(string $color, int $shade = 500): string
+    {
+        $shades = self::loadColors()[$color] ?? throw new \InvalidArgumentException(sprintf('The color "%s" does not exist.', $color));
+
+        return self::loadColors()[$color][$shade] ?? throw new \InvalidArgumentException(sprintf('The color "%s" does not exist.', $color));
     }
 
     /**

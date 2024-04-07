@@ -16,7 +16,9 @@ jobs:
       fail-fast: false
       matrix:
         package:
+          - { src: 'Apple', repo: 'apple-colors' }
           - { src: 'Bootstrap', repo: 'bootstrap-colors' }
+          - { src: 'Primer', repo: 'primer-colors' }
           - { src: 'Tailwind', repo: 'tailwind-colors' }
 
     steps:

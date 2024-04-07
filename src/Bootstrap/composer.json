@@ -7,7 +7,7 @@
         "bootstrap",
         "color",
         "palette",
-        "php",
+        "scale",
         "theme"
     ],
     "authors": [
@@ -21,10 +21,6 @@
         }
     ],
     "homepage": "https://phpcolor.dev/",
-    "support": {
-        "issues": "https://github.com/phpcolor/colors/issues",
-        "source": "https://github.com/phpcolor/colors/"
-    },
     "require": {
         "php": ">=8.3"
     },
