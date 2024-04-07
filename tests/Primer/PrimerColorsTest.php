@@ -14,18 +14,16 @@ declare(strict_types=1);
 namespace PhpColor\Colors\Tests\Primer;
 
 use PhpColor\Colors\Primer\PrimerColors;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(PrimerColors::class)]
 class PrimerColorsTest extends TestCase
 {
-    public function testGetIterator(): void
+    public function testCountColors(): void
     {
-        $colors = new PrimerColors();
+        $colors = new PrimerColors('light');
 
-        foreach ($colors as $name => $color) {
-            var_dump($name, $color);
-        }
-
-        self::assertCount(10, $colors);
+        self::assertCount(101, $colors);
     }
 }

@@ -14,18 +14,26 @@ declare(strict_types=1);
 namespace PhpColor\Colors\Tests\Bootstrap;
 
 use PhpColor\Colors\Bootstrap\BootstrapColors;
+use PHPUnit\Framework\Attributes\CoversClass;
 use PHPUnit\Framework\TestCase;
 
+#[CoversClass(BootstrapColors::class)]
 class BootstrapColorsTest extends TestCase
 {
-    public function testGetIterator(): void
+    public function testCountColors(): void
     {
-        $colors = new BootstrapColors();
+        $color = new BootstrapColors();
 
-        foreach ($colors as $name => $color) {
-            var_dump($name, $color);
-        }
+        self::assertCount(110, $color);
+    }
 
-        self::assertCount(10, $colors);
+    public function testGetColorNames(): void
+    {
+        $colorPalette = new BootstrapColors();
+        $colorNames = $colorPalette->getColorNames();
+
+        $this->assertIsArray($colorNames);
+        $this->assertCount(11, $colorNames);
+        $this->assertContains('red', $colorNames);
     }
 }

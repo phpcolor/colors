@@ -37,7 +37,7 @@ class BootstrapColors implements \IteratorAggregate, \Countable
 
     public const string GRAY = 'gray';
 
-    public static function getBaseColors(): array
+    public static function getColorNames(): array
     {
         return [
             self::BLUE,
