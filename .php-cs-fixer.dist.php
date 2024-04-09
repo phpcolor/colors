@@ -1,7 +1,7 @@
 <?php
 
 $licence = <<<'EOF'
-This file is part of the PhpColor library.
+This file is part of the PHPColor library.
 
 (c) Simon André & Raphaël Geffroy
 
