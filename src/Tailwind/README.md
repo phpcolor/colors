@@ -10,59 +10,27 @@ composer require phpcolor/tailwind-colors
 
 ## Usage
 
-
-### Base colors
+### Color names
 
 ```php
-use PhpColor\Colors\Tailwind\TailwindColors as Tailwind;
+use PhpColor\Colors\Apple\TailwindColors as Tailwind;
 
-$color = Tailwind::gray();       // #f7fafc
-$color = Tailwind::red();        // #fef2f2
-$color = Tailwind::yellow();     // #fffbeb
-$color = Tailwind::green();      // #f0fff4
-$color = Tailwind::blue();       // #ebf8ff
-$color = Tailwind::indigo();     // #ebf4ff
-$color = Tailwind::purple();     // #faf5ff
-$color = Tailwind::pink();       // #fff5f7
-$color = Tailwind::teal();       // #e6fffa
-$color = Tailwind::orange();     // #fffaf0
-$color = Tailwind::cyan();       // #ebf8ff
-$color = Tailwind::white();      // #ffffff
-$color = Tailwind::black();      // #000000
+$colors = Tailwind::colors();
 
-foreach (Tailwind::colors() as $color) {
-    echo $color . ' ' . $name . PHP_EOL;
-}
-// gray #f7fafc
-// red #fef2f2
-// yellow #fffbeb
-// ...
+$names = $colors->getNames(); 
+// 'gray', 'red', 'yellow', 'green', 'blue', 'indigo', 'purple',
+// 'pink', 'teal', 'orange', 'cyan', 'white', 'black'
 ```
 
-### Color scales
+### Color shades
 
 ```php
 use PhpColor\Colors\Tailwind\TailwindColors as Tailwind;
 
-$color = Tailwind::blue(50);     
-$color = Tailwind::blue(100);     
-$color = Tailwind::blue(200);     
-$color = Tailwind::blue(300);     
-$color = Tailwind::blue(400);     
-$color = Tailwind::blue(500);     
-$color = Tailwind::blue(600);     
-$color = Tailwind::blue(700);
-$color = Tailwind::blue(800);
-$color = Tailwind::blue(900);
-$color = Tailwind::blue(950);
+$colors = Tailwind::colors();
 
-foreach (Tailwind::colors('blue') as $color => $value) {
-    echo $color . ' ' . $value . PHP_EOL;
-}
-// blue-50   #ebf8ff
-// blue-100  #bee3f8
-// blue-200  #90cdf4
-// ...
+$shades = $colors->getShades(); 
+// 50,  100,  200,  300,  400,  500,  600,  700,  800,  900,  950
 ```
 
 ### Color values
@@ -70,24 +38,24 @@ foreach (Tailwind::colors('blue') as $color => $value) {
 ```php
 use PhpColor\Colors\Tailwind\TailwindColors as Tailwind;
 
-$color = Tailwind::gray(500);       
-$color = Tailwind::color('gray');
+$colors = Tailwind::colors();
 
-$color = Tailwind::gray(200);
-$color = Tailwind::color('gray', 200);
+echo $colors->teal;             // #14b8a6       
+echo $colors->teal();           // #14b8a6
+echo $colors->teal(500)         // #14b8a6
+
+echo $colors->get('teal');      // #14b8a6
+echo $colors->get('teal', 500); // #14b8a6
 ```
-
 
 ---
 
 ![Tailwind Colors](Resources/colors.svg)
 
-
 ## Credits
 
 The colors listed in this project are based on the colors used by [TailwindCss](https://tailwindcss.com). 
 
-
 ## License
 
-This library is released under the [MIT license](LICENSE).
+This [PHPColor](https://phpcolor.dev) package is released under the [MIT license](LICENSE).

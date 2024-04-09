@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the PhpColor library.
+ * This file is part of the PHPColor library.
  *
  * (c) Simon André & Raphaël Geffroy
  *
@@ -13,54 +13,105 @@ declare(strict_types=1);
 
 namespace PhpColor\Colors\Tailwind;
 
-final class TailwindColors implements \IteratorAggregate, \Countable
+/**
+ * @method string blue(int $shade = 500)
+ * @method string cyan(int $shade = 500)
+ * @method string gray(int $shade = 500)
+ * @method string green(int $shade = 500)
+ * @method string indigo(int $shade = 500)
+ * @method string orange(int $shade = 500)
+ * @method string pink(int $shade = 500)
+ * @method string purple(int $shade = 500)
+ * @method string red(int $shade = 500)
+ * @method string teal(int $shade = 500)
+ * @method string yellow(int $shade = 500)
+ *
+ * @implements \IteratorAggregate<string, array<int, string>>
+ */
+final class TailwindColors extends \stdClass implements \IteratorAggregate, \Countable
 {
-    private static array $colors;
-
-    private static function loadColors(): array
+    public static function colors(): self
     {
-        return self::$colors ??= require __DIR__.'/Resources/colors.php';
+        return new self(require __DIR__.'/Resources/colors.php');
     }
 
-    public function colors(?string $color = null): array
+    /**
+     * @param array<string, array<int, string>> $colors
+     */
+    private function __construct(private readonly array $colors)
     {
-        if ($color) {
-            return self::loadColors()[$color] ?? throw new \InvalidArgumentException(sprintf('The color "%s" does not exist.', $color));
+    }
+
+    /**
+     * @return list<string>
+     */
+    public function getNames(): array
+    {
+        return array_keys($this->colors);
+    }
+
+    /**
+     * @return list<int>
+     */
+    public function getShades(?string $color = null): array
+    {
+        $color ??= $this->getNames()[0];
+        return array_keys($this->colors[$color]);
+    }
+
+    public function get(string $color, int $shade = 500): string
+    {
+        if (!isset($this->colors[$color])) {
+            throw new \InvalidArgumentException(sprintf('The color "%s" does not exist.', $color));
+        }
+        if (!isset($this->colors[$color][$shade])) {
+            throw new \InvalidArgumentException(sprintf('The shade "%d" does not exist for the color "%s".', $shade, $color));
         }
 
-        return array_keys(self::loadColors());
+        return $this->colors[$color][$shade];
     }
 
-    public function color(string $color, int $shade = 500): string
+    public function has(string $name): bool
     {
-        $shades = self::loadColors()[$color] ?? throw new \InvalidArgumentException(sprintf('The color "%s" does not exist.', $color));
-
-        return self::loadColors()[$color][$shade] ?? throw new \InvalidArgumentException(sprintf('The color "%s" does not exist.', $color));
-    }
-
-    /**
-     * @return array<string>
-     */
-    public function getColorNames(): array
-    {
-        return array_keys(self::loadColors());
-    }
-
-    /**
-     * @return array<int, string> Index => Hex Color
-     */
-    public function getColorScale(string $color): array
-    {
-        return self::loadColors()[$color] ?? throw new \InvalidArgumentException(sprintf('The color "%s" does not exist.', $color));
-    }
-
-    public function getIterator(): \ArrayIterator
-    {
-        return new \RecursiveArrayIterator(self::loadColors());
+        return \in_array($name, $this->getNames(), true);
     }
 
     public function count(): int
     {
-        return count(self::loadColors(), COUNT_RECURSIVE);
+        return count($this->colors, COUNT_RECURSIVE);
+    }
+
+    /**
+     * @return \ArrayIterator<string, array<int, string>>
+     */
+    public function getIterator(): \ArrayIterator
+    {
+        return new \ArrayIterator($this->colors);
+    }
+
+    /**
+     * @param array<mixed> $arguments
+     */
+    public function __call(string $name, array $arguments): mixed
+    {
+        if (!$this->has($name)) {
+            throw new \BadMethodCallException(sprintf('The method "%s" does not exist.', $name));
+        }
+
+        if (isset($arguments[0]) && !\is_int($arguments[0])) {
+            throw new \InvalidArgumentException(sprintf('The first argument of "%s" must be an integer, "%s" given.', $name, get_debug_type($arguments[0])));
+        }
+
+        return $this->get($name, ...$arguments);
+    }
+
+    public function __get(string $name): string
+    {
+        return $this->get($name);
+    }
+
+    public function __set(string $name, mixed $value): void
+    {
+        throw new \BadMethodCallException('AppleColors are read-only.');
     }
 }
