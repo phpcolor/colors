@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the PhpColor library.
+ * This file is part of the PHPColor library.
  *
  * (c) Simon André & Raphaël Geffroy
  *
@@ -46,6 +46,7 @@ class AppleColorsTest extends TestCase
             'brown',
             'gray',
         ];
+        /** @var AppleColors $colors */
         $colors = $provider();
         self::assertEquals($expected, $colors->getNames());
     }
@@ -81,5 +82,12 @@ class AppleColorsTest extends TestCase
         self::assertStringStartsWith('#', $colors->get('red'));
         self::assertIsString($colors->red);
         self::assertStringStartsWith('#', $colors->red);
+    }
+
+    public function testSetter(): void
+    {
+        $colors = AppleColors::tvOS();
+        self::expectException(\BadMethodCallException::class);
+        $colors->red = '#FF0000';
     }
 }
