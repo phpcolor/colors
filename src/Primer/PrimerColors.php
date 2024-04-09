@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 /*
- * This file is part of the PhpColor library.
+ * This file is part of the PHPColor library.
  *
  * (c) Simon André & Raphaël Geffroy
  *
@@ -14,55 +14,114 @@ declare(strict_types=1);
 namespace PhpColor\Colors\Primer;
 
 /**
- * @implements \IteratorAggregate<string, string>
+ * @method string blue(int $shade = 5)
+ * @method string green(int $shade = 5)
+ * @method string yellow(int $shade = 5)
+ * @method string orange(int $shade = 5)
+ * @method string red(int $shade = 5)
+ * @method string purple(int $shade = 5)
+ * @method string pink(int $shade = 5)
+ * @method string coral(int $shade = 5)
+ *
+ * @implements \IteratorAggregate<string, array<int, string>>
  */
-final class PrimerColors implements \IteratorAggregate, \Countable
+final class PrimerColors extends \stdClass implements \IteratorAggregate, \Countable
 {
-    public const string THEME_LIGHT = 'light';
-
-    public const string THEME_DARK = 'dark';
-
     /**
-     * @var array<string, array<int, string>>
+     * @return list<string>
      */
-    private static array $themeColors = [];
-
-    /**
-     * @return string[]
-     */
-    public static function getThemes(): array
+    public static function themes(): array
     {
-        return [
-            self::THEME_LIGHT,
-            self::THEME_DARK,
-        ];
+        return ['light', 'dark'];
     }
 
-    public function __construct(private readonly string $theme)
+    public static function colors(string $theme = 'light'): self
     {
-        if (!in_array($theme, self::getThemes())) {
+        if (!in_array($theme, self::themes(), true)) {
             throw new \InvalidArgumentException(sprintf('The theme "%s" does not exist.', $theme));
         }
+
+        return new self(require __DIR__.'/Resources/'.$theme.'.php');
     }
 
     /**
-     * @return array<string>
+     * @param array<string, array<int, string>> $colors
      */
-    private function getColors(): array
+    private function __construct(private readonly array $colors)
     {
-        return static::$themeColors[$this->theme] ??= require __DIR__.'/Resources/'.$this->theme.'.php';
     }
 
     /**
-     * @return \ArrayIterator<string, string>
+     * @return list<string>
      */
-    public function getIterator(): \ArrayIterator
+    public function getNames(): array
     {
-        return new \ArrayIterator($this->getColors());
+        return array_keys($this->colors);
+    }
+
+    /**
+     * @return list<int>
+     */
+    public function getShades(?string $color = null): array
+    {
+        $color ??= $this->getNames()[0];
+
+        return array_keys($this->colors[$color]);
+    }
+
+    public function get(string $color, int $shade = 5): string
+    {
+        if (!isset($this->colors[$color])) {
+            throw new \InvalidArgumentException(sprintf('The color "%s" does not exist.', $color));
+        }
+        if (!isset($this->colors[$color][$shade])) {
+            throw new \InvalidArgumentException(sprintf('The shade "%d" does not exist for the color "%s".', $shade, $color));
+        }
+
+        return $this->colors[$color][$shade];
+    }
+
+    public function has(string $name): bool
+    {
+        return \in_array($name, $this->getNames(), true);
     }
 
     public function count(): int
     {
-        return count($this->getColors(), COUNT_RECURSIVE);
+        return count($this->colors, COUNT_RECURSIVE);
+    }
+
+    /**
+     * @return \ArrayIterator<string, array<int, string>>
+     */
+    public function getIterator(): \ArrayIterator
+    {
+        return new \ArrayIterator($this->colors);
+    }
+
+    /**
+     * @param array<mixed> $arguments
+     */
+    public function __call(string $name, array $arguments): mixed
+    {
+        if (!$this->has($name)) {
+            throw new \BadMethodCallException(sprintf('The method "%s" does not exist.', $name));
+        }
+
+        if (isset($arguments[0]) && !\is_int($arguments[0])) {
+            throw new \InvalidArgumentException(sprintf('The first argument of "%s" must be an integer, "%s" given.', $name, get_debug_type($arguments[0])));
+        }
+
+        return $this->get($name, ...$arguments);
+    }
+
+    public function __get(string $name): string
+    {
+        return $this->get($name);
+    }
+
+    public function __set(string $name, mixed $value): void
+    {
+        throw new \BadMethodCallException('PrimerColors are read-only.');
     }
 }

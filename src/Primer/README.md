@@ -3,15 +3,6 @@
 
 ![Primer Colors](Resources/colors.svg)
 
-<p align="center">
-<a href="http://unlicense.org/"><img src="https://img.shields.io/github/license/phpcolor/phpcolor?label=License&color=blue" alt="License: MIT"></a>
-&nbsp;
-<a href="http://unlicense.org/"><img src="https://img.shields.io/github/license/phpcolor/phpcolor?label=License&color=blue" alt="License: MIT"></a>
-&nbsp;
-<a href="http://unlicense.org/"><img src="https://img.shields.io/github/license/phpcolor/phpcolor?label=License&color=blue" alt="License: MIT"></a>
-</p>
-
-
 ## Installation
 
 ```bash
@@ -37,53 +28,80 @@ $color = Primer::pink();       // TODO
 $color = Primer::coral();
 ```
 
-```php
-use PhpColor\Colors\Primer\PrimerColors as Primer;
+<h1 align="center">Primer Colors</h1>
+<p align="center">This package provides access to the color palettes used in Primer CSS.</p>
+<img src="Resources/colors.svg" alt="Primer Colors" width="100%">
 
-foreach (Primer::colors() as $name => $color) {
-    echo $color . ' ' . $name . PHP_EOL;
-}
+## Installation
 
-// blue #007bff
-// indigo #6610f2
-// purple #6f42c1
-// ...
-
+```bash
+composer require phpcolor/primer-colors
 ```
 
+## Usage
 
-### Color Scales
-
-```php
-// ...
-$color = Primer::red(1);
-$color = Primer::red(2);
-// ...
-$color = Primer::red(8);
-$color = Primer::red(9);
-```
-
+### Color themes
 
 ```php
 use PhpColor\Colors\Primer\PrimerColors as Primer;
 
-foreach (Primer::colors($base) as $name => $color) {
-    echo $color . ' ' . $name . PHP_EOL;
-}
+$colors = Primer::colors();
+$colors = Primer::colors('light');
+
+$colors = Primer::colors('dark');
 ```
 
+### Color names
+
+```php
+use PhpColor\Colors\Primer\PrimerColors as Primer;
+
+$colors = Primer::colors();
+
+$names = $colors->getNames(); 
+// 'gray', 'blue', 'green', 'yellow', 'orange',
+// 'red', 'purple', 'pink', 'coral'
+```
+
+### Color shades
+
+```php
+use PhpColor\Colors\Primer\PrimerColors as Primer;
+
+$colors = Primer::colors();
+
+$shades = $colors->getShades(); 
+// 0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+```
+
+### Color values
+
+```php
+use PhpColor\Colors\Primer\PrimerColors as Primer;
+
+$colors = Primer::colors();
+
+echo $colors->coral;           // #C4432B       
+echo $colors->coral();         // #C4432B
+echo $colors->coral(5)         // #C4432B
+
+echo $colors->get('coral');    // #C4432B
+echo $colors->get('coral', 5); // #C4432B
+```
 
 ---
 
 ![Primer Colors](Resources/colors.svg)
 
-
 ## Credits
 
 The colors listed in this project are based on the colors used by [Primer](https://primer.style). 
 
-
 ## License
 
-This library is released under the [MIT license](LICENSE).
+This [PHPColor](https://phpcolor.dev) package is released under the [MIT license](LICENSE).
+
+
+
+
 
