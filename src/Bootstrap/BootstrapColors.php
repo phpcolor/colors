@@ -113,6 +113,6 @@ final class BootstrapColors extends \stdClass implements \IteratorAggregate, \Co
 
     public function __set(string $name, mixed $value): void
     {
-        throw new \BadMethodCallException('AppleColors are read-only.');
+        throw new \BadMethodCallException('BootstrapColors are read-only.');
     }
 }

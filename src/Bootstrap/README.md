@@ -1,5 +1,5 @@
 <h1 align="center">Bootstrap Colors</h1>
-<p align="center">This package provides access to the color palettes used in Bootstrap interfaces.</p>
+<p align="center">This package provides access to the color palettes used in Bootstrap CSS.</p>
 <img src="Resources/colors.svg" alt="Bootstrap Colors" width="100%">
 
 ## Installation
@@ -13,7 +13,7 @@ composer require phpcolor/bootstrap-colors
 ### Color names
 
 ```php
-use PhpColor\Colors\Apple\BootstrapColors as Bootstrap;
+use PhpColor\Colors\Bootstrap\BootstrapColors as Bootstrap;
 
 $colors = Bootstrap::colors();
 
@@ -54,7 +54,7 @@ echo $colors->get('teal', 500); // #14b8a6
 
 ## Credits
 
-The colors listed in this project are based on the colors used by [BootstrapCss](https://bootstrapcss.com). 
+The colors listed in this project are based on the colors used by [Bootstrap](https://getbootstrap.com). 
 
 ## License
 
