@@ -56,6 +56,7 @@ final class TailwindColors extends \stdClass implements \IteratorAggregate, \Cou
     public function getShades(?string $color = null): array
     {
         $color ??= $this->getNames()[0];
+
         return array_keys($this->colors[$color]);
     }
 
