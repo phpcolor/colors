@@ -1,34 +1,4 @@
 <h1 align="center">Primer Colors</h1>
-<p align="center">This package provides access to the entire color palette and color scales used in Github Primer.</p>
-
-![Primer Colors](Resources/colors.svg)
-
-## Installation
-
-```bash
-composer require phpcolor/primer-colors
-```
-
-## Usage
-
-
-### Base colors
-
-```php
-use PhpColor\Colors\Primer\PrimerColors as Primer;
-
-$color = Primer::gray();
-$color = Primer::blue();       // TODO
-$color = Primer::green();
-$color = Primer::yellow();
-$color = Primer::orange();
-$color = Primer::red();
-$color = Primer::purple();     // TODO
-$color = Primer::pink();       // TODO
-$color = Primer::coral();
-```
-
-<h1 align="center">Primer Colors</h1>
 <p align="center">This package provides access to the color palettes used in Primer CSS.</p>
 <img src="Resources/colors.svg" alt="Primer Colors" width="100%">
 
