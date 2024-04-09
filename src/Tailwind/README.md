@@ -13,7 +13,7 @@ composer require phpcolor/tailwind-colors
 ### Color names
 
 ```php
-use PhpColor\Colors\Apple\TailwindColors as Tailwind;
+use PhpColor\Colors\Tailwind\TailwindColors as Tailwind;
 
 $colors = Tailwind::colors();
 

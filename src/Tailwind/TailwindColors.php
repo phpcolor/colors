@@ -113,6 +113,6 @@ final class TailwindColors extends \stdClass implements \IteratorAggregate, \Cou
 
     public function __set(string $name, mixed $value): void
     {
-        throw new \BadMethodCallException('AppleColors are read-only.');
+        throw new \BadMethodCallException('TailwindColors are read-only.');
     }
 }
