@@ -4,7 +4,7 @@
 
 ## Packages
 
-| Name                                 | Composer instal             | Description                                          | 
+| Name                                 | Composer install            | Description                                          | 
 |--------------------------------------|-----------------------------|------------------------------------------------------|
 | [Apple](src/Apple/README.md)         | `phpcolor/apple-colors`     | Apple color palettes used in iOS, macOS, visionOS... |
 | [Bootstrap](src/Bootstrap/README.md) | `phpcolor/bootstrap-colors` | Bootstrap 5 color palettes & scales                  |
