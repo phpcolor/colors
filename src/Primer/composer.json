@@ -27,7 +27,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Phpcolor\\Colors\\Primer\\": ""
+            "PhpColor\\Colors\\Primer\\": ""
         }
     },
     "extra": {

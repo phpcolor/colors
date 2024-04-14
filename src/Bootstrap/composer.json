@@ -26,7 +26,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Phpcolor\\Colors\\Bootstrap\\": ""
+            "PhpColor\\Colors\\Bootstrap\\": ""
         }
     },
     "extra": {
