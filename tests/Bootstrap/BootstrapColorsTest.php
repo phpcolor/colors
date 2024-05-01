@@ -47,7 +47,7 @@ class BootstrapColorsTest extends TestCase
     {
         $colors = BootstrapColors::colors();
 
-        self::assertCount(110, $colors);
+        self::assertCount(99, $colors);
     }
 
     public function testHasColor(): void

@@ -79,7 +79,7 @@ final class BootstrapColors extends \stdClass implements \IteratorAggregate, \Co
 
     public function count(): int
     {
-        return count($this->colors, COUNT_RECURSIVE);
+        return count($this->colors, COUNT_RECURSIVE) - count($this->colors);
     }
 
     /**

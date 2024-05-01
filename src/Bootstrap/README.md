@@ -13,7 +13,7 @@ composer require phpcolor/bootstrap-colors
 ### Color names
 
 ```php
-use PhpColor\Colors\Bootstrap\BootstrapColors as Bootstrap;
+use PhpColor\Colors\Bootstrap\PicoColors as Bootstrap;
 
 $colors = Bootstrap::colors();
 
@@ -25,7 +25,7 @@ $names = $colors->getNames();
 ### Color shades
 
 ```php
-use PhpColor\Colors\Bootstrap\BootstrapColors as Bootstrap;
+use PhpColor\Colors\Bootstrap\PicoColors as Bootstrap;
 
 $colors = Bootstrap::colors();
 
@@ -36,7 +36,7 @@ $shades = $colors->getShades();
 ### Color values
 
 ```php
-use PhpColor\Colors\Bootstrap\BootstrapColors as Bootstrap;
+use PhpColor\Colors\Bootstrap\PicoColors as Bootstrap;
 
 $colors = Bootstrap::colors();
 
