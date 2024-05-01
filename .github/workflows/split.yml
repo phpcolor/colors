@@ -18,6 +18,7 @@ jobs:
         package:
           - { src: 'Apple', repo: 'apple-colors' }
           - { src: 'Bootstrap', repo: 'bootstrap-colors' }
+          - { src: 'Pico', repo: 'pico-colors' }
           - { src: 'Primer', repo: 'primer-colors' }
           - { src: 'Tailwind', repo: 'tailwind-colors' }
 
