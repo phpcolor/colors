@@ -58,6 +58,7 @@ class AppleColorsTest extends TestCase
     {
         return [
             [AppleColors::iOS(...)],
+            [AppleColors::iPadOS(...)],
             [AppleColors::macOS(...)],
             [AppleColors::tvOS(...)],
             [AppleColors::visionOS(...)],
