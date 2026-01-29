@@ -41,7 +41,10 @@ final class PicoColors extends \stdClass implements \IteratorAggregate, \Countab
 {
     public static function colors(): self
     {
-        return new self(require __DIR__.'/Resources/colors.php');
+        /** @var array<string, array<int, string>> $colors */
+        $colors = require __DIR__.'/Resources/colors.php';
+
+        return new self($colors);
     }
 
     /**
@@ -86,9 +89,15 @@ final class PicoColors extends \stdClass implements \IteratorAggregate, \Countab
         return \in_array($name, $this->getNames(), true);
     }
 
+    /**
+     * @return int<0, max>
+     */
     public function count(): int
     {
-        return count($this->colors, COUNT_RECURSIVE) - count($this->colors);
+        $total = count($this->colors, COUNT_RECURSIVE) - count($this->colors);
+        assert($total >= 0);
+
+        return $total;
     }
 
     /**
@@ -112,7 +121,13 @@ final class PicoColors extends \stdClass implements \IteratorAggregate, \Countab
             throw new \InvalidArgumentException(sprintf('The first argument of "%s" must be an integer, "%s" given.', $name, get_debug_type($arguments[0])));
         }
 
-        return $this->get($name, ...$arguments);
+        $shade = 500;
+        if (isset($arguments[0])) {
+            assert(\is_int($arguments[0]));
+            $shade = $arguments[0];
+        }
+
+        return $this->get($name, $shade);
     }
 
     public function __get(string $name): string
