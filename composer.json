@@ -27,6 +27,10 @@
     "replace": {
         "phpcolor/apple-colors": "self.version",
         "phpcolor/bootstrap-colors": "self.version",
+        "phpcolor/dracula-colors": "self.version",
+        "phpcolor/material-colors": "self.version",
+        "phpcolor/nord-colors": "self.version",
+        "phpcolor/open-color": "self.version",
         "phpcolor/pico-colors": "self.version",
         "phpcolor/primer-colors": "self.version",
         "phpcolor/tailwind-colors": "self.version"

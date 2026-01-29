@@ -1,0 +1,37 @@
+{
+    "name": "phpcolor/material-colors",
+    "description": "Material Design Colors - PHP Color Palette",
+    "license": "MIT",
+    "type": "library",
+    "keywords": [
+        "material",
+        "material-design",
+        "color",
+        "palette",
+        "scale",
+        "google"
+    ],
+    "authors": [
+        {
+            "name": "Simon André",
+            "email": "smn.andre@gmail.com"
+        },
+        {
+            "name": "Raphaël Geffroy",
+            "email": "raphael@geffroy.dev"
+        }
+    ],
+    "homepage": "https://phpcolor.dev/",
+    "require": {
+        "php": ">=8.3"
+    },
+    "autoload": {
+        "psr-4": { "PhpColor\\Colors\\Material\\": "" }
+    },
+    "extra": {
+        "thanks": {
+            "name": "phpcolor/colors",
+            "url": "https://github.com/phpcolor/colors"
+        }
+    }
+}

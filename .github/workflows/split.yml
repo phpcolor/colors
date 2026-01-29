@@ -18,6 +18,10 @@ jobs:
         package:
           - { src: 'Apple', repo: 'apple-colors' }
           - { src: 'Bootstrap', repo: 'bootstrap-colors' }
+          - { src: 'Dracula', repo: 'dracula-colors' }
+          - { src: 'Material', repo: 'material-colors' }
+          - { src: 'Nord', repo: 'nord-colors' }
+          - { src: 'OpenColor', repo: 'open-color' }
           - { src: 'Pico', repo: 'pico-colors' }
           - { src: 'Primer', repo: 'primer-colors' }
           - { src: 'Tailwind', repo: 'tailwind-colors' }
