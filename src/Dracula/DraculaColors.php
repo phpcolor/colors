@@ -20,7 +20,10 @@ final class DraculaColors extends \stdClass implements \IteratorAggregate, \Coun
 {
     public static function colors(): self
     {
-        return new self(require __DIR__.'/Resources/colors.php');
+        /** @var array<string, array{string, int[]}> $colors */
+        $colors = require __DIR__.'/Resources/colors.php';
+
+        return new self($colors);
     }
 
     /**

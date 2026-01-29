@@ -40,7 +40,10 @@ final class MaterialColors extends \stdClass implements \IteratorAggregate, \Cou
 {
     public static function colors(): self
     {
-        return new self(require __DIR__.'/Resources/colors.php');
+        /** @var array<string, array<int|string, string>> $colors */
+        $colors = require __DIR__.'/Resources/colors.php';
+
+        return new self($colors);
     }
 
     /**
@@ -111,7 +114,9 @@ final class MaterialColors extends \stdClass implements \IteratorAggregate, \Cou
             throw new \InvalidArgumentException(sprintf('The first argument of "%s" must be an integer or string, "%s" given.', $name, get_debug_type($arguments[0])));
         }
 
-        return $this->get($name, ...$arguments);
+        $shade = isset($arguments[0]) ? (\is_int($arguments[0]) || \is_string($arguments[0]) ? $arguments[0] : 500) : 500;
+
+        return $this->get($name, $shade);
     }
 
     public function __get(string $name): string

@@ -41,7 +41,10 @@ final class PrimerColors extends \stdClass implements \IteratorAggregate, \Count
             throw new \InvalidArgumentException(sprintf('The theme "%s" does not exist.', $theme));
         }
 
-        return new self(require __DIR__.'/Resources/'.$theme.'.php');
+        /** @var array<string, array<int, string>> $colors */
+        $colors = require __DIR__.'/Resources/'.$theme.'.php';
+
+        return new self($colors);
     }
 
     /**
@@ -112,7 +115,13 @@ final class PrimerColors extends \stdClass implements \IteratorAggregate, \Count
             throw new \InvalidArgumentException(sprintf('The first argument of "%s" must be an integer, "%s" given.', $name, get_debug_type($arguments[0])));
         }
 
-        return $this->get($name, ...$arguments);
+        $shade = 5;
+        if (isset($arguments[0])) {
+            assert(\is_int($arguments[0]));
+            $shade = $arguments[0];
+        }
+
+        return $this->get($name, $shade);
     }
 
     public function __get(string $name): string
